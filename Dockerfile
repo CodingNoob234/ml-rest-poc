@@ -7,14 +7,16 @@ WORKDIR /
 # Copy the application code (including requirements.txt)
 COPY . .
 
+# LightGBM environment
+RUN chmod 1777 /tmp
+RUN apt-get update --allow-unauthenticated
+
+RUN apt-get install -y --no-install-recommends apt-utils
+RUN apt-get -y install curl
+RUN apt-get install libgomp1
+
 # Install the project dependencies
 RUN pip install --no-cache-dir -r requirements.txt
-
-# Load properties.env
-ENV PROPERTIES_PATH=/properties.env
-
-# Expose the port that the application listens on
-EXPOSE 8000
 
 # Set the entrypoint command to run the application
 CMD ["python", "-m", "app.main"]
