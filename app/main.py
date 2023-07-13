@@ -38,11 +38,21 @@ ssl_certfile = os.getenv("SSL_CERTFILE")
 ssl_enabled = False
 if ssl_keyfile and ssl_keyfile_password and ssl_certfile:
     ssl_enabled = False if os.getenv("SSL_ENABLED") in ["False", "false"] else True
+    
+# Get port
+default_port = "8000"
+port_str: str = os.getenv("SERVER_PORT", default_port)
+port: int
+try:
+    port = int(port_str)
+except ValueError:
+    logger.warning(f"invalid port provided '{port_str}'")
+    port = int(default_port)
 
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, 
         host="0.0.0.0", 
-        port=8000, 
+        port=port, 
         **ssl_context
     )
