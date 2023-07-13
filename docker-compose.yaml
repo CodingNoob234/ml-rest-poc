@@ -1,0 +1,13 @@
+version: "3"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - LOG_LEVEL=info
+      - SSL_KEYFILE=/config/key.pem
+      - SSL_CERTFILE=/config/cert.pem
+      - SSL_KEYFILE_PASSWORD=Passw0rd

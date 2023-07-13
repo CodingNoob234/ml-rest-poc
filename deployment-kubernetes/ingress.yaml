@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ml-api-poc-ingress
+  namespace: ml-api-t
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /api/prediction
+            pathType: Prefix
+            backend:
+              service:
+                name: ml-api-poc-service
+                port:
+                  number: 8000
