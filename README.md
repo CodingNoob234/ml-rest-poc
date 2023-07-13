@@ -6,15 +6,13 @@ Below is described how the applications can be run locally or through container 
 
 ## Running locally
 It is generally advices to use a virtual environment to prevent dependency conflicts. If this is desired, first run the following commands:
-- ``` conda create --name my-temporary-env python=3.9.16```
+- ``` conda create --name my-temporary-env python=3.11.4```
 - ``` conda activate my-temporary-env ```
 Removing the environment is done by:
 - ``` conda remove my-temporary-env ```
 The required dependencies are installed through:
 ``` pip install -r requirements.txt ```
-The functions for feature engineering are located in another repo. For local development, clone ``` ml-model-poc ``` and run ``` pip install -e . ``` in the root of ``` ml-model-poc ```. The package can, if available, also be cloned from Azure DevOps. Make sure to enable all requirements in your dependency management tool to setup an upstream.
 After making sure all dependencies are installed, the application can be started by running ``` python -m app.main ``` in the root of the project.
-
 (In case an error is thrown related to importing LightGBM, running ``` conda install -c conda-forge lightgbm ``` probably solves the issue).
 
 ## Running in Docker
@@ -32,8 +30,7 @@ To mimic the Azure environment as much as possible, the application can be run i
 - ``` kubectl port-forward service/ml-api-poc-service 8000:8000 -n ml-api-t ```
 
 ## Test Call to API
-Through all the above methods, the API is reachable for POST requests at http(s)://localhost:8000/api/prediction. The body should be of type json in the following structure:
-``` {input_data: [1,2,3,4]} ```
+Through all the above methods, the API is reachable for POST requests at http(s)://localhost:8000/api/prediction. Data processing 
 The test2.ipynb notebook contains an example call to the ML api. This should work independent of how the application is build (local, docker, kubernetes).
 
 # Creating Self-Signed Certificates

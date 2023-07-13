@@ -1,53 +1,45 @@
 annotated-types==0.5.0
 anyio==3.7.1
 attrs==23.1.0
-Brotli @ file:///Users/runner/miniforge3/conda-bld/brotli-split_1687884187023/work
 certifi==2023.5.7
-charset-normalizer @ file:///home/conda/feedstock_root/build_artifacts/charset-normalizer_1688813409104/work
 click==8.1.5
 contourpy==1.1.0
 cycler==0.11.0
--e git+https://jbesseling@dev.azure.com/jbesseling/MLEnablement/_git/ml-model-poc@7dc1a0ba6680edac259753dbce2c0b5e1aa8d659#egg=data_processing
 fastapi==0.100.0
 fonttools==4.41.0
 h11==0.14.0
 httpcore==0.17.3
 httpx==0.24.1
-idna @ file:///home/conda/feedstock_root/build_artifacts/idna_1663625384323/work
+idna==3.4
 iniconfig==2.0.0
-joblib @ file:///home/conda/feedstock_root/build_artifacts/joblib_1688155275339/work
+joblib==1.3.1
 jsonschema==4.18.3
 jsonschema-specifications==2023.6.1
 kiwisolver==1.4.4
-lightgbm @ file:///Users/runner/miniforge3/conda-bld/lightgbm_1674563518552/work
 matplotlib==3.7.2
-numpy @ file:///Users/runner/miniforge3/conda-bld/numpy_1688887090181/work
-packaging @ file:///home/conda/feedstock_root/build_artifacts/packaging_1681337016113/work
+numpy==1.25.1
+packaging==23.1
 pandas==2.0.3
 pickle-mixin==1.0.2
 Pillow==10.0.0
-platformdirs @ file:///home/conda/feedstock_root/build_artifacts/platformdirs_1688739404342/work
 pluggy==1.2.0
-pooch @ file:///home/conda/feedstock_root/build_artifacts/pooch_1679580333621/work
 pydantic==2.0.2
 pydantic_core==2.1.2
 pyparsing==3.0.9
-PySocks @ file:///home/conda/feedstock_root/build_artifacts/pysocks_1661604839144/work
 pytest==7.4.0
 python-dateutil==2.8.2
 python-dotenv==1.0.0
 pytz==2023.3
 referencing==0.29.1
-requests @ file:///home/conda/feedstock_root/build_artifacts/requests_1684774241324/work
 rpds-py==0.8.10
-scikit-learn @ file:///Users/runner/miniforge3/conda-bld/scikit-learn_1688116528758/work
-scipy @ file:///Users/runner/miniforge3/conda-bld/scipy-split_1687995672847/work/base/dist/scipy-1.11.1-cp311-cp311-macosx_10_9_x86_64.whl#sha256=a98d68c1d8dad3fc78082be77629b2b097ae2d7c9b0626aef8b66cf2e0bae081
+scikit-learn==1.3.0
+scipy==1.11.1
 seaborn==0.12.2
 six==1.16.0
 sniffio==1.3.0
 starlette==0.27.0
-threadpoolctl @ file:///home/conda/feedstock_root/build_artifacts/threadpoolctl_1689261241048/work
-typing_extensions @ file:///home/conda/feedstock_root/build_artifacts/typing_extensions_1688315532570/work
+threadpoolctl==3.2.0
+typing_extensions==4.7.1
 tzdata==2023.3
-urllib3 @ file:///home/conda/feedstock_root/build_artifacts/urllib3_1688005749963/work
 uvicorn==0.22.0
+lightgbm==3.3.5
