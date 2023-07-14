@@ -21,6 +21,8 @@ The application can also be run in a container by ``` docker compose up --build 
 ## Running in Minikube kubernetes cluster
 To mimic the Azure environment as much as possible, the application can be run in a locally managed kubernetes cluster as well. To do so, a list of commands need to be executed from the root of the project.
 - ``` minikube start ```
+- ``` minikube addons enable ingress ```
+- ``` minikube addons enable ingress-dns ```
 - ``` eval $(minikube -p minikube docker-env) ```
 - ``` docker build -t ml-api-poc-image:latest . ```
 - ``` kubectl apply -f namespace.yaml ```

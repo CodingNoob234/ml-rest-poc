@@ -5,12 +5,14 @@ metadata:
   namespace: ml-api-t
 spec:
   rules:
-    - http:
+    - host: helloworld.info
+      http:
         paths:
-          - path: /api/prediction
+          - path: /
             pathType: Prefix
             backend:
               service:
                 name: ml-api-poc-service
+                # namespace: ml-api-t
                 port:
                   number: 8000

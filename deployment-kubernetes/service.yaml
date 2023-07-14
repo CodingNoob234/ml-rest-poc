@@ -4,7 +4,7 @@ metadata:
   name: ml-api-poc-service
   namespace: ml-api-t
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: ml-api-poc
   ports:
