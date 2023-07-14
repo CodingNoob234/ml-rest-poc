@@ -8,10 +8,9 @@ Below is described how the applications can be run locally or through container 
 It is generally advices to use a virtual environment to prevent dependency conflicts. If this is desired, first run the following commands:
 - ``` conda create --name my-temporary-env python=3.11.4```
 - ``` conda activate my-temporary-env ```
-Removing the environment is done by:
-- ``` conda remove my-temporary-env ```
-The required dependencies are installed through:
-``` pip install -r requirements.txt ```
+- (removing is done by``` conda remove my-temporary-env ```)
+- ``` pip install -r requirements.txt ```
+
 After making sure all dependencies are installed, the application can be started by running ``` python -m app.main ``` in the root of the project.
 (In case an error is thrown related to importing LightGBM, running ``` conda install -c conda-forge lightgbm ``` probably solves the issue).
 
