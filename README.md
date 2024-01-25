@@ -19,20 +19,14 @@ The application can also be run in a container by ``` docker compose up --build 
 
 ## Running in Minikube kubernetes cluster
 To mimic the Azure environment as much as possible, the application can be run in a locally managed kubernetes cluster as well. To do so, a list of commands need to be executed from the root of the project.
-- ``` minikube start ```
-- ``` minikube addons enable ingress ```
-- ``` minikube addons enable ingress-dns ```
-- ``` eval $(minikube -p minikube docker-env) ```
 - ``` docker build -t ml-api-poc-image:latest . ```
 - ``` kubectl apply -f namespace.yaml ```
 - ``` kubectl apply -f deployment.yaml ```
 - ``` kubectl apply -f service.yaml ```
 - ``` kubectl apply -f ingress.yaml ```
-- ``` kubectl port-forward service/ml-api-poc-service 8000:8000 -n ml-api-t ```
 
 ## Test Call to API
-Through all the above methods, the API is reachable for POST requests at http(s)://localhost:8000/api/prediction. Data processing 
-The test2.ipynb notebook contains an example call to the ML api. This should work independent of how the application is build (local, docker, kubernetes).
+Through all the above methods, the API is reachable for POST requests at http(s)://localhost:31738/api/prediction. The test2.ipynb notebook contains an example call to the ML api. This should work independent of how the application is build (local, docker, kubernetes).
 
 # Creating Self-Signed Certificates
 For creating self signed certificates to enable one-way SSL communcation, execute the following commands:
