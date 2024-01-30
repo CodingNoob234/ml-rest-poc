@@ -37,6 +37,7 @@ ssl_certfile = os.getenv("SSL_CERTFILE")
 # Check if SSL enabled
 ssl_enabled = False
 if ssl_keyfile and ssl_keyfile_password and ssl_certfile:
+    logger.info('SSL enabled')
     ssl_enabled = False if os.getenv("SSL_ENABLED") in ["False", "false"] else True
     
 # Get port

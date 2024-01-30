@@ -2,7 +2,7 @@
 This repository contains a REST api that can receive post request with data, that it uses to predict a fraudulent transaction. This application is aimed to provide a proof-of-concept and is related to ml-model-poc. There the model is trained and the necessary functions for feature engineering are packaged from there.
 
 # Build and Test
-Below is described how the applications can be run locally or through container orchestration. For all below build descriptions, requests can be send to localhost:8000/api/prediction.
+Below is described how the applications can be run locally or through container orchestration. For all below build descriptions, requests can be send to localhost:port/api/prediction.
 
 ## Running locally
 It is generally advices to use a virtual environment to prevent dependency conflicts. If this is desired, first run the following commands:
@@ -17,16 +17,18 @@ After making sure all dependencies are installed, the application can be started
 ## Running in Docker
 The application can also be run in a container by ``` docker compose up --build ```. 
 
-## Running in Minikube kubernetes cluster
+## Running in Kubernetes Cluster
 To mimic the Azure environment as much as possible, the application can be run in a locally managed kubernetes cluster as well. To do so, a list of commands need to be executed from the root of the project.
 - ``` docker build -t ml-api-poc-image:latest . ```
 - ``` kubectl apply -f namespace.yaml ```
 - ``` kubectl apply -f deployment.yaml ```
 - ``` kubectl apply -f service.yaml ```
-- ``` kubectl apply -f ingress.yaml ```
+
+## Logging & Monitoring
+The kubernetes applications also contain config files for filebeat, elasticsearch and 
 
 ## Test Call to API
-Through all the above methods, the API is reachable for POST requests at http(s)://localhost:31738/api/prediction. The test2.ipynb notebook contains an example call to the ML api. This should work independent of how the application is build (local, docker, kubernetes).
+Through all the above methods, the API is reachable for POST requests at http(s)://localhost:31738/api/prediction (port 8000 for local and docker). The test2.ipynb notebook contains an example call to the ML api. This should work independent of how the application is build (local, docker, kubernetes).
 
 # Creating Self-Signed Certificates
 For creating self signed certificates to enable one-way SSL communcation, execute the following commands:
@@ -36,7 +38,7 @@ For creating self signed certificates to enable one-way SSL communcation, execut
 - ``` openssl x509 -req -days 365 -in csr.pem -signkey key.pem -out cert.pem ```
 
 # Properties
-The application makes use of environment properties, partially to fully enable CI/CD development. In the following table the properties described that are required for the application to function properly.
+The application makes use of environment properties. In the following table describes all properties that are required for the application to function properly.
 
 | Property      | Default value| Description                                   |
 |---------------|--------------|-----------------------------------------------|
@@ -47,4 +49,9 @@ The application makes use of environment properties, partially to fully enable C
 | SSL_CERTFILE      | /config/cert.pem      | Certfile for one-way SSL                      |
 | SSL_KEYFILE       | /config/key.pem       | Keyfile for one-way SSL                       |
 | SSL_KEYFILE_PASSWORD | Passw0rd           | Password for Keyfile                          |
-| SSL_ENABLED       | False                 | To disable SSL communication                  |
+| SSL_ENABLED       | False                 | To enable SSL communication                  |
+
+# To-Do
+Many things can be improved in this application, such as:
+- configure the monitoring of logs through elasticsearch and kibana
+- health endpoints (also for auto scaling)

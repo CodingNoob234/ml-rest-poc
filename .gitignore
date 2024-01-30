@@ -1,6 +1,8 @@
 .pytest_cache
 logs/
 data
+deployment-kubernetes elastic
+deployment-test
 
 
 # Byte-compiled / optimized files
