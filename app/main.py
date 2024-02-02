@@ -45,8 +45,8 @@ except ValueError:
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, 
+    uvicorn.run(app,
         host="0.0.0.0", 
-        port=port, 
+        port=port,
         **ssl_context
     )

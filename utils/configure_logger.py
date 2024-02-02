@@ -18,10 +18,15 @@ def configure_logger():
     log_level = log_level_mapping.get(log_level, logging.INFO)
 
     # Configure the logger with the specified log level and other settings
+    DEFAULT_LOG_FILE_PATH = "./logs/app.log"
+    log_file_path = os.getenv("LOG_FILE_PATH", DEFAULT_LOG_FILE_PATH)
+    if log_file_path in ['False', 'false', 'None', 'none']:
+        log_file_path = None
+    
     logging.basicConfig(
         level=log_level,
         format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S",
-        filename='./logs/app.log',
+        filename=log_file_path,
         filemode='a'
     )

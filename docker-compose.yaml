@@ -6,3 +6,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
+    environment:
+      - LOG_FILE_PATH=None
+      - SSL_ENABLED=True
