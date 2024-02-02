@@ -18,6 +18,11 @@ ssl_enabled = False
 if ssl_keyfile and ssl_keyfile_password and ssl_certfile:
     ssl_enabled = False if os.getenv("SSL_ENABLED") in ["False", "false"] else True
 
+if ssl_enabled:
+    logger.info('SSL communication is enabled')
+else:
+    logger.info('SSL communication is disabled')
+
 ssl_context = {
     "ssl_keyfile": ssl_keyfile if ssl_enabled else None,
     "ssl_keyfile_password": ssl_keyfile_password if ssl_enabled else None,
