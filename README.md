@@ -1,34 +1,31 @@
-# Introduction 
-This repository contains a REST api that can receive post request with data, that it uses to predict a fraudulent transaction. This application is aimed to provide a proof-of-concept and is related to ml-model-poc. There the model is trained and the necessary functions for feature engineering are packaged from there.
+# Introduction
+This repository contains a REST API that can receive post requests with data that is used to compute features and return a prediction. As an example, main.ipynb trains a model on the Credit Card Fraud Detection dataset from Kaggle. The model and pre-computed features are stored in pickle so it can be loaded in the REST API. The API supports validation of the input data and using pre-computed features (for example features based on grouped averages for example or historic means).
 
 # Build and Test
-Below is described how the applications can be run locally or through container orchestration. For all below build descriptions, requests can be send to localhost:port/api/prediction.
+Below is described how the applications can be run locally or through container orchestration. For all the descriptions below, requests can be send to localhost:port/api/prediction.
 
 ## Running locally
-It is generally advices to use a virtual environment to prevent dependency conflicts. If this is desired, first run the following commands:
+It is generally adviced to use a virtual environment to prevent dependency conflicts. First run the following commands:
 - ``` conda create --name my-temporary-env python=3.11.4```
 - ``` conda activate my-temporary-env ```
-- (removing is done by``` conda remove my-temporary-env ```)
+- (removing is done by ``` conda remove my-temporary-env ```)
 - ``` pip install -r requirements.txt ```
 
-After making sure all dependencies are installed, the application can be started by running ``` python -m app.main ``` in the root of the project.
+After making sure all dependencies are installed, the application can be started by running ``` python -m app.main ``` from the root of the project.
 (In case an error is thrown related to importing LightGBM, running ``` conda install -c conda-forge lightgbm ``` probably solves the issue).
 
 ## Running in Docker
 The application can also be run in a container by ``` docker compose up --build ```. 
 
 ## Running in Kubernetes Cluster
-To mimic the Azure environment as much as possible, the application can be run in a locally managed kubernetes cluster as well. To do so, a list of commands need to be executed from the root of the project.
+It is also possible to run the application in a kubernetes cluster. To do so, a list of commands need to be executed from the root of the project. First, make sure you have a local kubernetes cluster running (can be easily achieved with docker desktop or minikube).
 - ``` docker build -t ml-api-poc-image:latest . ```
-- ``` kubectl apply -f namespace.yaml ```
-- ``` kubectl apply -f deployment.yaml ```
-- ``` kubectl apply -f service.yaml ```
-
-## Logging & Monitoring
-The kubernetes applications also contain config files for filebeat, elasticsearch and 
+- ``` kubectl apply -f deployment-kubernetes/namespace.yaml ```
+- ``` kubectl apply -f deployment-kubernetes/deployment.yaml ```
+- ``` kubectl apply -f deployment-kubernetes/service.yaml ```
 
 ## Test Call to API
-Through all the above methods, the API is reachable for POST requests at http(s)://localhost:31738/api/prediction (port 8000 for local and docker). The test2.ipynb notebook contains an example call to the ML api. This should work independent of how the application is build (local, docker, kubernetes).
+Through all the above methods, the API is reachable for POST requests at http(s)://localhost:31738/api/prediction (port 8000 for local and docker). The test2.ipynb notebook contains an example call to the API. This should work independent of how the application is build (local, docker, kubernetes), but make sure to set the booleans 'local', 'k8' and 'http' correctly.
 
 # Creating Self-Signed Certificates
 For creating self signed certificates to enable one-way SSL communcation, execute the following commands:
@@ -38,7 +35,7 @@ For creating self signed certificates to enable one-way SSL communcation, execut
 - ``` openssl x509 -req -days 365 -in csr.pem -signkey key.pem -out cert.pem ```
 
 # Properties
-The application makes use of environment properties. In the following table describes all properties that are required for the application to function properly.
+The application makes use of environment properties. The following table describes all properties that are required for the application to function properly.
 
 | Property      | Default value| Description                                   |
 |---------------|--------------|-----------------------------------------------|
