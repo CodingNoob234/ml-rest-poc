@@ -28,11 +28,6 @@ app.include_router(health_router, prefix="/health")
 
 # Verify SSL Version
 logger.info("Configuring SSL for version %s" % (ssl.OPENSSL_VERSION))
-
-# SSL configuration
-ssl_keyfile_password = os.getenv("SSL_KEYFILE_PASSWORD")
-ssl_keyfile = os.getenv("SSL_KEYFILE")
-ssl_certfile = os.getenv("SSL_CERTFILE")
     
 # Get port
 default_port = "8000"
