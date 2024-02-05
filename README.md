@@ -21,8 +21,8 @@ The application can also be run in a container by ``` docker compose up --build 
 It is also possible to run the application in a kubernetes cluster. To do so, a list of commands need to be executed from the root of the project. First, make sure you have a local kubernetes cluster running (can be easily achieved with docker desktop or minikube).
 - ``` docker build -t ml-api-poc-image:latest . ```
 - ``` kubectl apply -f deployment-kubernetes/namespace.yaml ```
-- ``` kubectl apply -f deployment-kubernetes/deployment.yaml ```
-- ``` kubectl apply -f deployment-kubernetes/service.yaml ```
+- ``` kubectl apply -f deployment-kubernetes/app-deployment.yaml ```
+- ``` kubectl apply -f deployment-kubernetes/app-service.yaml ```
 
 ## Test Call to API
 Through all the above methods, the API is reachable for POST requests at http(s)://localhost:31738/api/prediction (port 8000 for local and docker). The test2.ipynb notebook contains an example call to the API. This should work independent of how the application is build (local, docker, kubernetes), but make sure to set the booleans 'local', 'k8' and 'http' correctly.
