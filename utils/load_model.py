@@ -2,7 +2,7 @@ import os
 import pickle
 
 # Get the file path of the model from environment variables
-file_path = os.getenv("LOCAL_MODEL_PATH")
+file_path = os.getenv("LOCAL_MODEL_PATH", "tmp/model_pre_features.pkl")
 
 # Check if the model file exists
 if not os.path.isfile(file_path):
