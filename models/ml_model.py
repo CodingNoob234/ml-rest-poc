@@ -4,6 +4,7 @@ logger = logging.getLogger(__name__)
 from numpy import asarray
 from utils.load_model import model, pre_computed_features
 
+from data_loading.enrich_data import enrich_data
 from data_processing.data_validation import validate_json
 from data_processing.create_features import create_features
 from data_processing.pre_processing import pre_processing
@@ -19,6 +20,9 @@ def make_prediction(input_data):
     Returns:
         The post-processed prediction result.
     """
+    
+    # Enrich data
+    input_data = enrich_data(input_data)
     
     # Validate input
     logger.debug("Input data:\n" + str(input_data))
